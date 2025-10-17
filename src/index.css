@@ -4,7 +4,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 
-
+html, body, #root {
+  width: 100%;        /* el contenedor principal ocupa el 100% del iframe */
+  max-width: 100%;    /* evita que se salga del ancho */
+  height: 100%;       /* ocupa todo el alto disponible */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden; /* evita scroll horizontal */
+}
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
@@ -325,12 +333,4 @@ gap: 0.5rem;
   }
 }
 
-body, #app {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-}
 
