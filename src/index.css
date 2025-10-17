@@ -1,10 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
+
+h1 {
+    font-family:'Montserrat', sans-serif !important;
+}
+
+h2 {
+    font-family:'Montserrat', sans-serif !important;
+}
+
+h3 {
+    font-family:'Montserrat', sans-serif !important;
+}
+
+h4 {
+    font-family:'Montserrat', sans-serif !important;
+}
+
+p {
+    font-family:'Montserrat', sans-serif !important;
+}
 
 @layer base {
   :root {
@@ -76,15 +99,62 @@ All colors MUST be HSL.
     box-shadow: var(--glow-warning);
   }
   
+ .glassmorphism-head {
+    padding:  50px 20px 20px 20px;
+    backdrop-filter: blur(3px);
+  }
+
+.head-items {
+  gap: 1.5rem !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.head-line {
+    gap: 1rem !important;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.text-head {
+    display: flex;
+    text-align: center;
+    gap: 0.5rem;
+    flex-direction: column;
+        align-items: center;
+  }
+
+  .text-title {
+    text-shadow: 0 0 10px hsla(51, 100%, 50%, 0.642);
+    color: hsl(var(--foreground));
+    font-weight: 100;
+    font-family:'Montserrat', sans-serif;
+    font-size: 1.25rem;
+  }
+
+  .btn-head {
+    width:fit-content;
+display: flex;
+gap: 0.5rem;
+    padding: 0.75rem;
+  }
+
+
   .glassmorphism {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.052);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
   
   .text-glow {
-    text-shadow: 0 0 10px currentColor;
+    text-shadow: 0 0 10px hsla(51, 100%, 50%, 0.642);
   }
+}
+
+.head-items {
+  gap: 1rem;
 }
 
 @layer base {

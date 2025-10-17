@@ -47,24 +47,27 @@ const PatientSelection = () => {
       <ParticleField density={60} color="#00FFFF" />
 
       {/* Header */}
-      <header className="relative z-10 p-4 border-b border-border/30 glassmorphism">
-        <div className="flex flex-col items-center gap-3">
-          <div className="flex items-center gap-3">
+      <header className="glassmorphism-head">
+        <div className="head-items">
+          <div className="head-line">
+
             <div className="p-2 rounded-lg bg-primary/10 glow-primary">
               <Brain className="w-6 h-6 text-primary animate-pulse-glow" />
             </div>
-            <div className="text-center">
-              <h1 className="text-xl font-bold text-foreground text-glow">
-                Neural Empathy System
+
+            <div className="text-head">
+
+              <h1 className="text-title">
+                SympatHelmet
               </h1>
-              <p className="text-xs text-muted-foreground">v2.0 - Patient Selection</p>
+              <p className="text-xs text-muted-foreground">v1.0 - patient selection</p>
+
+
+
             </div>
           </div>
 
-          <div className="flex items-center gap-2 glassmorphism px-3 py-1.5 rounded-lg">
-            <ShieldCheck className="w-4 h-4 text-accent" />
-            <span className="text-xs text-foreground">Ethics Active</span>
-          </div>
+         
         </div>
       </header>
 
