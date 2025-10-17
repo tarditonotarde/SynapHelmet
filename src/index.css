@@ -58,13 +58,13 @@ p {
   border-radius: var(--radius);
   display: flex;
   width: fit-content;
+  margin-top: 1.2rem !important;
 }
 
 .card-elem {
   text-align: left;
     flex: 1 1 0%;
     display: flex;
-    gap: 0.5rem;
     flex-direction: column;
 }
 
