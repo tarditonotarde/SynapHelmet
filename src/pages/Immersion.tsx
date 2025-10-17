@@ -88,18 +88,17 @@ const Immersion = () => {
       </header>
 
       {/* Main Immersion View */}
-      <main className="main-imn">
-        {/* Left: Symptom Visualization */}
-        <div className="flex-1 p-8">
+      <main>
+     
+             {/* Left: Symptom Visualization */}
           <div className="h-full rounded-2xl overflow-hidden border border-primary/30 glow-primary bg-card/20">
             <SymptomVisualization symptomType="pain" intensity={intensity} />
           </div>
-        </div>
 
         {/* Right: Observation Panel */}
-        <div className="w-96 p-8 space-y-6">
+
           {/* Intensity Control */}
-          <div className="glassmorphism rounded-2xl p-6 space-y-4 glow-secondary animate-fade-in">
+          <div className="glassmorphism-card-inm rounded-2xl p-6 space-y-4 glow-secondary animate-fade-in">
             <div className="flex items-center gap-3">
               <Brain className="w-6 h-6 text-secondary" />
               <h3 className="text-lg font-bold text-foreground">Neural Intensity</h3>
@@ -153,7 +152,6 @@ const Immersion = () => {
               End Session
             </Button>
           </div>
-        </div>
       </main>
 
       {/* Ethics Panel Overlay */}

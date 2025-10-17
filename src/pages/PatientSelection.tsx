@@ -72,7 +72,6 @@ const PatientSelection = () => {
 
       {/* Main Content */}
       <main className="">
-        <div className="max-w-md mx-auto px-4 py-6 space-y-6">
 
           {/* Title Section */}
           <div className="text-center space-y-2 animate-fade-in">
@@ -126,7 +125,6 @@ const PatientSelection = () => {
               </div>
             </div>
           </div>
-        </div>
       </main>
     </div>
   );

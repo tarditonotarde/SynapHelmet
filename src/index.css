@@ -11,12 +11,13 @@ All colors MUST be HSL.
 
 h1 {
     font-family:'Montserrat', sans-serif !important;
+    font-size: 1.5rem !important;
+
 }
 
 h2 {
      font-family: 'Montserrat', sans-serif !important;
     font-size: 1.5rem !important;
-    text-transform: uppercase !important;
     font-weight: 100 !important;
     color: rgba(255, 255, 0, 0.826) !important;
 }
@@ -70,6 +71,7 @@ border-radius: var(--radius);
       width: 250px;
     justify-content: space-between;
 }
+
 @layer base {
   :root {
     /* Black Mirror Dark Theme */
@@ -173,10 +175,12 @@ border-radius: var(--radius);
 }
 
 main {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
 } 
 .logo-head {
   padding: 0.5rem;
@@ -280,6 +284,22 @@ gap: 0.5rem;
     background: rgba(255, 255, 255, 0.052);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 300px;
+
+  }
+
+    .glassmorphism-card-inm {
+    background: rgba(255, 255, 255, 0.052);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 300px;
+  }
+
+    .glassmorphism-card-neu {
+    background: rgba(255, 255, 255, 0.052);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 250px;
   }
   
   .text-glow {
