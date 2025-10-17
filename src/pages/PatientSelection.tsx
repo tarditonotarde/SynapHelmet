@@ -47,43 +47,42 @@ const PatientSelection = () => {
       <ParticleField density={60} color="#00FFFF" />
 
       {/* Header */}
-      <header className="relative z-10 p-6 border-b border-border/30 glassmorphism">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <header className="relative z-10 p-4 border-b border-border/30 glassmorphism">
+        <div className="flex flex-col items-center gap-3">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-lg bg-primary/10 glow-primary">
-              <Brain className="w-8 h-8 text-primary animate-pulse-glow" />
+              <Brain className="w-6 h-6 text-primary animate-pulse-glow" />
             </div>
-            <div>
-              <h1 className="text-2xl font-bold text-foreground text-glow">
+            <div className="text-center">
+              <h1 className="text-xl font-bold text-foreground text-glow">
                 Neural Empathy System
               </h1>
-              <p className="text-sm text-muted-foreground">v2.0 - Patient Selection Interface</p>
+              <p className="text-xs text-muted-foreground">v2.0 - Patient Selection</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 glassmorphism px-4 py-2 rounded-lg">
-            <ShieldCheck className="w-5 h-5 text-accent" />
-            <span className="text-sm text-foreground">Ethics Protocol Active</span>
+          <div className="flex items-center gap-2 glassmorphism px-3 py-1.5 rounded-lg">
+            <ShieldCheck className="w-4 h-4 text-accent" />
+            <span className="text-xs text-foreground">Ethics Active</span>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="relative z-10 max-w-7xl mx-auto p-8">
-        <div className="space-y-8">
+      <main className="relative z-10 h-[calc(100vh-120px)] overflow-y-auto">
+        <div className="max-w-md mx-auto px-4 py-6 space-y-6">
           {/* Title Section */}
-          <div className="text-center space-y-4 animate-fade-in">
-            <h2 className="text-4xl font-bold text-foreground text-glow">
-              Select Patient for Immersion
+          <div className="text-center space-y-2 animate-fade-in">
+            <h2 className="text-2xl font-bold text-foreground text-glow">
+              Select Patient
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Choose a patient to experience their symptoms through advanced neural connection
-              technology. All participants have provided informed consent.
+            <p className="text-sm text-muted-foreground">
+              Choose a patient to experience their symptoms through neural immersion
             </p>
           </div>
 
-          {/* Patient Cards */}
-          <div className="flex gap-6 justify-center items-center py-8 overflow-x-auto">
+          {/* Patient Cards - Vertical Scroll */}
+          <div className="space-y-4">
             {mockPatients.map((patient, index) => (
               <div
                 key={patient.id}
@@ -101,27 +100,25 @@ const PatientSelection = () => {
 
           {/* Action Button */}
           {selectedPatient && (
-            <div className="flex justify-center animate-fade-in">
+            <div className="sticky bottom-0 pt-4 pb-2 bg-gradient-to-t from-background via-background to-transparent animate-fade-in">
               <Button
                 onClick={handleBeginImmersion}
-                className="px-8 py-6 text-lg font-bold rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground glow-primary transition-all duration-300 hover:scale-105"
+                className="w-full py-6 text-lg font-bold rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground glow-primary transition-all duration-300"
               >
-                <Brain className="w-6 h-6 mr-2" />
+                <Brain className="w-5 h-5 mr-2" />
                 Begin Neural Immersion
               </Button>
             </div>
           )}
 
           {/* Safety Notice */}
-          <div className="mt-12 glassmorphism rounded-2xl p-6 border border-warning/30 max-w-3xl mx-auto">
-            <div className="flex items-start gap-4">
-              <ShieldCheck className="w-6 h-6 text-warning flex-shrink-0 mt-1" />
-              <div className="space-y-2">
-                <h3 className="text-lg font-bold text-warning">Safety & Ethics Notice</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  This system uses advanced empathetic neural mapping to simulate patient
-                  experiences. All sessions are monitored and can be terminated at any time.
-                  User safety protocols are active. Maximum session duration: 30 minutes.
+          <div className="glassmorphism rounded-xl p-4 border border-warning/30 mb-6">
+            <div className="flex items-start gap-3">
+              <ShieldCheck className="w-5 h-5 text-warning flex-shrink-0 mt-0.5" />
+              <div className="space-y-1">
+                <h3 className="text-sm font-bold text-warning">Safety & Ethics</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  All sessions monitored. Can be terminated anytime. Maximum duration: 30 min.
                 </p>
               </div>
             </div>
