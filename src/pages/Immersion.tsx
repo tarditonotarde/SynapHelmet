@@ -8,6 +8,7 @@ import { Slider } from "@/components/ui/slider";
 import { Brain, FileText, AlertTriangle, Activity, ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
 
+
 const Immersion = () => {
   const { patientId } = useParams();
   const navigate = useNavigate();
@@ -53,19 +54,21 @@ const Immersion = () => {
       {/* Header HUD */}
       <header className="glassmorphism-head">
         <div className="head-items-2">
-          <Button
-            variant="ghost"
-            onClick={() => navigate("/")}
-            className="text-muted-foreground hover:text-foreground"
-          >
-            <ArrowLeft className="w-5 h-5 mr-2" />
-            Exit Immersion
-          </Button>
+
+          <div className="logo-head">
+  <Brain               onClick={handleEndSession}
+className="holo-brain logo-h"/>
+</div>
 
           <div className="head-line-2">
-            <div className="btn-inm">
+
+
+
+            <div               onClick={handleEndSession}
+ className="btn-inm">
               <span className="text-sm text-foreground">Connected</span>
-                            <Activity className="w-5 h-5 text-primary animate-pulse" />
+                            <Activity 
+                           className="w-5 h-5 text-primary animate-pulse" />
 
             </div>
 
@@ -146,7 +149,7 @@ const Immersion = () => {
           <div className="space-y-3">
             <Button
               onClick={handleEndSession}
-              className="w-full bg-destructive hover:bg-destructive/90 text-destructive-foreground glow-destructive"
+              className="btn-end w-full bg-destructive hover:bg-destructive/90 text-destructive-foreground glow-destructive"
             >
               <AlertTriangle className="w-4 h-4 mr-2" />
               End Session
