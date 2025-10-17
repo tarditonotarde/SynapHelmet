@@ -14,11 +14,19 @@ h1 {
 }
 
 h2 {
-    font-family:'Montserrat', sans-serif !important;
+     font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.5rem !important;
+    text-transform: uppercase !important;
+    font-weight: 100 !important;
+    color: rgba(255, 255, 0, 0.826) !important;
 }
 
 h3 {
     font-family:'Montserrat', sans-serif !important;
+    text-shadow: 0 0 10px hsla(51, 100%, 50%, 0.642) !important;
+    color: hsl(var(--foreground)) !important;
+    font-weight: 400 !important;
+    font-size: 1.125rem !important;
 }
 
 h4 {
@@ -27,8 +35,41 @@ h4 {
 
 p {
     font-family:'Montserrat', sans-serif !important;
+    color: hsl(var(--muted-foreground)) !important;
+    font-size: 0.8rem !important;
+    font-weight: 400 !important;
+
 }
 
+.btn-card {
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  background-color: hsl(var(--muted) / 0.2);
+  border-color: hsl(var(--primary) / 0.3);
+  border-width: 2px;
+  border-radius: var(--radius);
+  display: flex;
+  width: fit-content;
+}
+
+.card-elem {
+  text-align: left;
+    flex: 1 1 0%;
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+}
+
+.btn-inm {
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+background: rgba(255, 255, 255, 0.052);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.1);  border-color: hsl(var(--primary) / 0.3);
+border-radius: var(--radius);
+  display: flex;
+  width: fit-content;
+      width: 250px;
+    justify-content: space-between;
+}
 @layer base {
   :root {
     /* Black Mirror Dark Theme */
@@ -111,12 +152,106 @@ p {
   align-items: center;
 }
 
+.head-items-2 {
+  gap: 1.5rem !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .head-line {
     gap: 1rem !important;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
+
+.head-line-2 {
+    gap: 1rem !important;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+} 
+.logo-head {
+  padding: 0.5rem;
+}
+
+.logo-h {
+    color: hsl(var(--primary)) !important ;
+    width: 3rem;
+    height: 3rem;
+}
+
+/* === 🔮 HOLOGRAPHIC BRAIN EFFECT === */
+.holo-brain {
+  color: #00ffff; /* Electric Blue */
+  filter: drop-shadow(0 0 6px #00ffff) drop-shadow(0 0 10px #8a2be2);
+  animation: brain-glow 3s infinite ease-in-out, brain-float 6s infinite ease-in-out;
+  position: relative;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.holo-brain:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 12px #ffd700) drop-shadow(0 0 20px #ff4c4c);
+}
+
+/* === 🌈 GLOW PULSE === */
+@keyframes brain-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px #00ffff) drop-shadow(0 0 12px #8a2be2);
+  }
+  50% {
+    filter: drop-shadow(0 0 16px #ffd700) drop-shadow(0 0 24px #ff4c4c);
+  }
+}
+
+/* === 🫧 FLOATING MOTION === */
+@keyframes brain-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* === ✨ PARTICLES AROUND BRAIN === */
+.holo-brain::before,
+.holo-brain::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140%;
+  height: 140%;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(0,255,255,0.2) 0%, transparent 70%);
+  animation: brain-particles 8s infinite linear;
+  mix-blend-mode: screen;
+}
+
+.holo-brain::after {
+  background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 80%);
+  animation-direction: reverse;
+}
+
+@keyframes brain-particles {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
 
 .text-head {
     display: flex;
@@ -140,7 +275,6 @@ display: flex;
 gap: 0.5rem;
     padding: 0.75rem;
   }
-
 
   .glassmorphism {
     background: rgba(255, 255, 255, 0.052);

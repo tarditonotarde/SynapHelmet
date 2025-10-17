@@ -51,8 +51,8 @@ const Immersion = () => {
       <ParticleField density={80} color="#8A2BE2" />
 
       {/* Header HUD */}
-      <header className="relative z-20 p-4 glassmorphism border-b border-border/30">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <header className="glassmorphism-head">
+        <div className="head-items-2">
           <Button
             variant="ghost"
             onClick={() => navigate("/")}
@@ -62,15 +62,17 @@ const Immersion = () => {
             Exit Immersion
           </Button>
 
-          <div className="flex items-center gap-6">
-            <div className="glassmorphism px-4 py-2 rounded-lg flex items-center gap-2">
-              <Activity className="w-5 h-5 text-primary animate-pulse" />
+          <div className="head-line-2">
+            <div className="btn-inm">
               <span className="text-sm text-foreground">Connected</span>
+                            <Activity className="w-5 h-5 text-primary animate-pulse" />
+
             </div>
 
-            <div className="glassmorphism px-4 py-2 rounded-lg">
-              <span className="text-sm text-muted-foreground">Session Time: </span>
+            <div className="btn-inm">
+              <span className="text-sm text-foreground">Session Time</span>
               <span className="text-primary font-bold">{formatTime(sessionTime)}</span>
+
             </div>
 
             <Button
@@ -86,7 +88,7 @@ const Immersion = () => {
       </header>
 
       {/* Main Immersion View */}
-      <main className="relative z-10 h-[calc(100vh-80px)] flex">
+      <main className="main-imn">
         {/* Left: Symptom Visualization */}
         <div className="flex-1 p-8">
           <div className="h-full rounded-2xl overflow-hidden border border-primary/30 glow-primary bg-card/20">

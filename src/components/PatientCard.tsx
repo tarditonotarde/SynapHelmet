@@ -45,12 +45,12 @@ export const PatientCard = ({ patient, isActive, onClick }: PatientCardProps) =>
         </div>
 
         {/* Patient Info */}
-        <div className="flex-1 text-left space-y-1">
+        <div className="card-elem flex-1 text-left space-y-1">
           <h3 className="text-lg font-bold text-foreground text-glow">{patient.name}</h3>
           <p className="text-xs text-muted-foreground">
             {patient.age} years • {patient.gender}
           </p>
-          <div className="inline-block px-3 py-1 rounded-lg bg-muted/20 border border-primary/30">
+          <div className="btn-card">
             <p className="text-xs text-primary font-medium">{patient.condition}</p>
           </div>
         </div>

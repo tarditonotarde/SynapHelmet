@@ -51,9 +51,9 @@ const PatientSelection = () => {
         <div className="head-items">
           <div className="head-line">
 
-            <div className="p-2 rounded-lg bg-primary/10 glow-primary">
-              <Brain className="w-6 h-6 text-primary animate-pulse-glow" />
-            </div>
+          <div className="logo-head">
+  <Brain className="holo-brain logo-h"/>
+</div>
 
             <div className="text-head">
 
@@ -61,7 +61,6 @@ const PatientSelection = () => {
                 SympatHelmet
               </h1>
               <p className="text-xs text-muted-foreground">v1.0 - patient selection</p>
-
 
 
             </div>
@@ -72,11 +71,12 @@ const PatientSelection = () => {
       </header>
 
       {/* Main Content */}
-      <main className="relative z-10 h-[calc(100vh-120px)] overflow-y-auto">
+      <main className="">
         <div className="max-w-md mx-auto px-4 py-6 space-y-6">
+
           {/* Title Section */}
           <div className="text-center space-y-2 animate-fade-in">
-            <h2 className="text-2xl font-bold text-foreground text-glow">
+            <h2 className="">
               Select Patient
             </h2>
             <p className="text-sm text-muted-foreground">
