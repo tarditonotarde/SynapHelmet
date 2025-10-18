@@ -14,7 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Orbitron', 'sans-serif'],
+        mono: ['Space Mono', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -57,7 +58,8 @@ export default {
       },
       backgroundImage: {
         'gradient-dark': 'var(--gradient-dark)',
-        'gradient-neon': 'var(--gradient-neon)',
+        'gradient-retro': 'var(--gradient-retro)',
+        'gradient-atomic': 'var(--gradient-atomic)',
       },
       borderRadius: {
         lg: "var(--radius)",

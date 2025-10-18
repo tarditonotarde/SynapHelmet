@@ -2,12 +2,48 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ParticleField } from "@/components/ParticleField";
 import { SymptomVisualization } from "@/components/SymptomVisualization";
+import { AudioRecorder } from "@/components/AudioRecorder";
+import { PatientProfile } from "@/components/PatientProfile";
+import { MedicalStats } from "@/components/MedicalStats";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Slider } from "@/components/ui/slider";
-import { Brain, FileText, AlertTriangle, Activity, ArrowLeft } from "lucide-react";
+import { Brain, FileText, AlertTriangle, Activity } from "lucide-react";
 import { toast } from "sonner";
 
+
+const mockPatients = {
+  "1": {
+    id: "1",
+    name: "Sarah Mitchell",
+    age: 34,
+    gender: "Female",
+    condition: "Chronic Migraine",
+    lastSession: "2025-03-15",
+    totalSessions: 8,
+    averageIntensity: 0.65,
+  },
+  "2": {
+    id: "2",
+    name: "James Rodriguez",
+    age: 28,
+    gender: "Male",
+    condition: "Anxiety Disorder",
+    lastSession: "2025-03-18",
+    totalSessions: 5,
+    averageIntensity: 0.52,
+  },
+  "3": {
+    id: "3",
+    name: "Emily Chen",
+    age: 45,
+    gender: "Female",
+    condition: "Fibromyalgia",
+    lastSession: "2025-03-20",
+    totalSessions: 12,
+    averageIntensity: 0.73,
+  },
+};
 
 const Immersion = () => {
   const { patientId } = useParams();
@@ -16,6 +52,8 @@ const Immersion = () => {
   const [notes, setNotes] = useState("");
   const [showEthicsPanel, setShowEthicsPanel] = useState(false);
   const [sessionTime, setSessionTime] = useState(0);
+  
+  const patient = mockPatients[patientId as keyof typeof mockPatients];
 
   useEffect(() => {
     // Session timer
@@ -45,6 +83,10 @@ const Immersion = () => {
   const handleEndSession = () => {
     toast.success("Session ended. Patient data saved.");
     navigate("/");
+  };
+
+  const handleTranscription = (text: string) => {
+    setNotes(prev => prev + (prev ? "\n\n" : "") + `[Audio Note]: ${text}`);
   };
 
   return (
@@ -92,69 +134,74 @@ className="holo-brain logo-h"/>
 
       {/* Main Immersion View */}
       <main>
-     
-             {/* Left: Symptom Visualization */}
-          <div className="h-full rounded-2xl overflow-hidden border border-primary/30 glow-primary bg-card/20">
-            <SymptomVisualization symptomType="pain" intensity={intensity} />
+        {/* Symptom Visualization */}
+        <div className="h-64 rounded-2xl overflow-hidden border border-primary/30 glow-primary bg-card/20">
+          <SymptomVisualization symptomType="pain" intensity={intensity} />
+        </div>
+
+        {/* Patient Profile */}
+        {patient && <PatientProfile patient={patient} />}
+
+        {/* Medical Stats */}
+        <MedicalStats currentIntensity={intensity} sessionTime={sessionTime} />
+
+        {/* Intensity Control */}
+        <div className="glassmorphism-card-inm rounded-2xl p-6 space-y-4 glow-secondary animate-fade-in">
+          <div className="flex items-center gap-3">
+            <Brain className="w-6 h-6 text-secondary" />
+            <h3 className="text-lg font-bold text-foreground">Neural Intensity</h3>
           </div>
 
-        {/* Right: Observation Panel */}
-
-          {/* Intensity Control */}
-          <div className="glassmorphism-card-inm rounded-2xl p-6 space-y-4 glow-secondary animate-fade-in">
-            <div className="flex items-center gap-3">
-              <Brain className="w-6 h-6 text-secondary" />
-              <h3 className="text-lg font-bold text-foreground">Neural Intensity</h3>
-            </div>
-
-            <div className="space-y-3">
-              <Slider
-                value={[intensity * 100]}
-                onValueChange={(value) => setIntensity(value[0] / 100)}
-                max={100}
-                step={1}
-                className="w-full"
-              />
-              <p className="text-sm text-muted-foreground">
-                Adjust the intensity of symptom simulation
-              </p>
-            </div>
-          </div>
-
-          {/* Notes Panel */}
-          <div className="glassmorphism rounded-2xl p-6 space-y-4 glow-primary animate-fade-in">
-            <div className="flex items-center gap-3">
-              <FileText className="w-6 h-6 text-primary" />
-              <h3 className="text-lg font-bold text-foreground">Observations</h3>
-            </div>
-
-            <Textarea
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-              placeholder="Record your observations and diagnostic notes..."
-              className="min-h-[200px] bg-background/50 border-primary/30 text-foreground resize-none"
-            />
-
-            <div className="flex gap-2">
-              <Button
-                onClick={() => toast.success("Notes saved to patient record")}
-                className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground"
-              >
-                Save Notes
-              </Button>
-            </div>
-          </div>
-
-          {/* Action Buttons */}
           <div className="space-y-3">
+            <Slider
+              value={[intensity * 100]}
+              onValueChange={(value) => setIntensity(value[0] / 100)}
+              max={100}
+              step={1}
+              className="w-full"
+            />
+            <p className="text-sm text-muted-foreground font-mono">
+              Adjust the intensity of symptom simulation
+            </p>
+          </div>
+        </div>
+
+        {/* Notes Panel with Audio Recording */}
+        <div className="glassmorphism rounded-2xl p-6 space-y-4 glow-primary animate-fade-in">
+          <div className="flex items-center gap-3">
+            <FileText className="w-6 h-6 text-primary" />
+            <h3 className="text-lg font-bold text-foreground">Observations</h3>
+          </div>
+
+          <Textarea
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            placeholder="Record your observations and diagnostic notes..."
+            className="min-h-[200px] bg-background/50 border-primary/30 text-foreground resize-none font-mono"
+          />
+
+          <div className="flex flex-col gap-3">
+            <AudioRecorder onTranscriptionComplete={handleTranscription} />
+            
             <Button
-              onClick={handleEndSession}
-              className="btn-end w-full bg-destructive hover:bg-destructive/90 text-destructive-foreground glow-destructive"
+              onClick={() => toast.success("Notes saved to patient record")}
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
             >
-              <AlertTriangle className="w-4 h-4 mr-2" />
-              End Session
+              Save Notes
             </Button>
           </div>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="space-y-3">
+          <Button
+            onClick={handleEndSession}
+            className="btn-end w-full bg-destructive hover:bg-destructive/90 text-destructive-foreground glow-destructive"
+          >
+            <AlertTriangle className="w-4 h-4 mr-2" />
+            End Session
+          </Button>
+        </div>
       </main>
 
       {/* Ethics Panel Overlay */}
