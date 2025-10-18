@@ -5,6 +5,7 @@ import { SymptomVisualization } from "@/components/SymptomVisualization";
 import { AudioRecorder } from "@/components/AudioRecorder";
 import { PatientProfile } from "@/components/PatientProfile";
 import { MedicalStats } from "@/components/MedicalStats";
+import { EmotionalMetrics } from "@/components/EmotionalMetrics";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Slider } from "@/components/ui/slider";
@@ -142,8 +143,14 @@ className="holo-brain logo-h"/>
         {/* Patient Profile */}
         {patient && <PatientProfile patient={patient} />}
 
-        {/* Medical Stats */}
-        <MedicalStats currentIntensity={intensity} sessionTime={sessionTime} />
+        {/* Two Column Layout for Metrics */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {/* Medical Stats */}
+          <MedicalStats currentIntensity={intensity} sessionTime={sessionTime} />
+          
+          {/* Emotional Metrics */}
+          <EmotionalMetrics intensity={intensity} />
+        </div>
 
         {/* Intensity Control */}
         <div className="glassmorphism-card-inm rounded-2xl p-6 space-y-4 glow-secondary animate-fade-in">

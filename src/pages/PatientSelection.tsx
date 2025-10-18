@@ -86,32 +86,33 @@ const PatientSelection = () => {
           {/* Patient Cards - Vertical Scroll */}
           <div className="space-y-4">
             {mockPatients.map((patient, index) => (
-              <div
-                key={patient.id}
-                className="animate-slide-in"
-                style={{ animationDelay: `${index * 0.15}s` }}
-              >
-                <PatientCard
-                  patient={patient}
-                  isActive={selectedPatient === patient.id}
-                  onClick={() => setSelectedPatient(patient.id)}
-                />
+              <div key={patient.id}>
+                <div
+                  className="animate-slide-in"
+                  style={{ animationDelay: `${index * 0.15}s` }}
+                >
+                  <PatientCard
+                    patient={patient}
+                    isActive={selectedPatient === patient.id}
+                    onClick={() => setSelectedPatient(patient.id)}
+                  />
+                </div>
+                
+                {/* Action Button - appears below selected patient */}
+                {selectedPatient === patient.id && (
+                  <div className="mt-3 animate-fade-in">
+                    <Button
+                      onClick={handleBeginImmersion}
+                      className="w-full py-6 text-lg font-bold rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground glow-primary transition-all duration-300"
+                    >
+                      <Brain className="w-5 h-5 mr-2" />
+                      Begin Neural Immersion
+                    </Button>
+                  </div>
+                )}
               </div>
             ))}
           </div>
-
-          {/* Action Button */}
-          {selectedPatient && (
-            <div className="sticky bottom-0 pt-4 pb-2 bg-gradient-to-t from-background via-background to-transparent animate-fade-in">
-              <Button
-                onClick={handleBeginImmersion}
-                className="w-full py-6 text-lg font-bold rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground glow-primary transition-all duration-300"
-              >
-                <Brain className="w-5 h-5 mr-2" />
-                Begin Neural Immersion
-              </Button>
-            </div>
-          )}
 
           {/* Safety Notice */}
           <div className="glassmorphism rounded-xl p-4 border border-warning/30 mb-6">
