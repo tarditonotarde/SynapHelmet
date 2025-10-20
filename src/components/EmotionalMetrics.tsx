@@ -45,29 +45,30 @@ export const EmotionalMetrics = ({ intensity }: EmotionalMetricsProps) => {
   ];
 
   return (
-    <Card className="glassmorphism-card-neu rounded-2xl p-6 border-secondary/30 glow-secondary">
+    <Card className="glassmorphism-card-neu rounded-2xl p-6 border-secondary/30 glow-secondary h-full" role="region" aria-label="Patient emotional and psychological metrics">
       <div className="space-y-4">
         <div className="flex items-center gap-3 border-b border-secondary/20 pb-3">
-          <Heart className="w-6 h-6 text-secondary" />
+          <Heart className="w-6 h-6 text-secondary" aria-hidden="true" />
           <h3 className="text-lg font-bold text-foreground">Emotional Metrics</h3>
         </div>
 
-        <div className="grid grid-cols-1 gap-4">
+        <div className="grid grid-cols-1 gap-4" role="list" aria-label="List of emotional metrics">
           {metrics.map((metric, index) => {
             const Icon = metric.icon;
             return (
               <div
                 key={index}
-                className="space-y-2 p-4 rounded-lg bg-background/50 border border-accent/20"
+                role="listitem"
+                className="space-y-2 p-4 rounded-lg bg-background/50 border border-accent/20 focus-within:ring-2 focus-within:ring-secondary/50"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Icon className={`w-5 h-5 ${metric.color}`} />
+                    <Icon className={`w-5 h-5 ${metric.color}`} aria-hidden="true" />
                     <span className="text-sm font-medium text-foreground">
                       {metric.label}
                     </span>
                   </div>
-                  <span className={`text-xl font-bold ${metric.color}`}>
+                  <span className={`text-xl font-bold ${metric.color}`} aria-label={`${metric.label}: ${metric.value} percent`}>
                     {metric.value}%
                   </span>
                 </div>
@@ -75,8 +76,9 @@ export const EmotionalMetrics = ({ intensity }: EmotionalMetricsProps) => {
                   value={metric.value} 
                   className="h-2"
                   indicatorClassName={metric.bgColor}
+                  aria-label={`${metric.label} progress: ${metric.value}%`}
                 />
-                <p className="text-xs text-muted-foreground font-mono">
+                <p className="text-xs text-muted-foreground font-mono" role="status">
                   {metric.value > 70 ? "High" : metric.value > 40 ? "Moderate" : "Normal"} - 
                   {metric.value > 70 ? " Requires attention" : metric.value > 40 ? " Monitor closely" : " Within range"}
                 </p>

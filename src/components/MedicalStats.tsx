@@ -77,42 +77,43 @@ export const MedicalStats = ({ currentIntensity, sessionTime, isConnected }: Med
   ];
 
   return (
-    <Card className="glassmorphism-card-neu rounded-2xl p-6 border-primary/30 glow-primary">
+    <Card className="glassmorphism-card-neu rounded-2xl p-6 border-primary/30 glow-primary h-full" role="region" aria-label="Patient medical vitals monitoring">
       <div className="space-y-4">
         <div className="flex items-center gap-3 border-b border-primary/20 pb-3">
-          <Activity className="w-6 h-6 text-primary" />
+          <Activity className="w-6 h-6 text-primary" aria-hidden="true" />
           <h3 className="text-lg font-bold text-foreground">Live Metrics</h3>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-3" role="list" aria-label="List of medical vital signs">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className="space-y-1 p-3 rounded-lg bg-background/50 border border-accent/20 hover:border-primary/30 transition-colors"
+              role="listitem"
+              className="space-y-1 p-3 rounded-lg bg-background/50 border border-accent/20 hover:border-primary/30 transition-colors focus-within:ring-2 focus-within:ring-primary/50"
             >
               <p className="text-xs text-muted-foreground font-mono uppercase tracking-wider">
                 {stat.label}
               </p>
               <div className="flex items-baseline gap-1">
-                <span className="text-xl font-bold text-foreground">
+                <span className="text-xl font-bold text-foreground" aria-label={`${stat.label}: ${stat.value} ${stat.unit || ''}`}>
                   {stat.value}
                 </span>
                 {stat.unit && (
-                  <span className="text-xs text-muted-foreground ml-0.5">{stat.unit}</span>
+                  <span className="text-xs text-muted-foreground ml-0.5" aria-hidden="true">{stat.unit}</span>
                 )}
               </div>
               {stat.change !== undefined && (
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1" aria-label={`Change from last session: ${stat.change > 0 ? 'increased' : 'decreased'} by ${Math.abs(stat.change)} percent`}>
                   {stat.change > 0 ? (
                     <>
-                      <TrendingUp className="w-3 h-3 text-secondary" />
+                      <TrendingUp className="w-3 h-3 text-secondary" aria-hidden="true" />
                       <span className="text-xs text-secondary font-mono">
                         +{stat.change}%
                       </span>
                     </>
                   ) : (
                     <>
-                      <TrendingDown className="w-3 h-3 text-destructive" />
+                      <TrendingDown className="w-3 h-3 text-destructive" aria-hidden="true" />
                       <span className="text-xs text-destructive font-mono">
                         {stat.change}%
                       </span>
@@ -128,8 +129,8 @@ export const MedicalStats = ({ currentIntensity, sessionTime, isConnected }: Med
         </div>
 
         <div className="pt-3 border-t border-accent/20">
-          <div className="flex items-center gap-2 text-accent">
-            <Clock className="w-4 h-4" />
+          <div className="flex items-center gap-2 text-accent" role="status" aria-live="polite">
+            <Clock className="w-4 h-4" aria-hidden="true" />
             <p className="text-xs font-mono">
               Recommended break in {30 - Math.floor(sessionTime / 60)} minutes
             </p>
