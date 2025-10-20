@@ -89,17 +89,32 @@ p {
   transition: all 0.3s ease;
 }
 
+.btn-ethics {
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  display: flex;
+  width: fit-content;
+  min-width: 200px;
+  max-width: 300px;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
 @media (max-width: 640px) {
   .btn-inm {
-    min-width: 150px;
-    max-width: 100%;
+    min-width: 200px;
+    max-width: 300px;
     padding: 0.5rem;
     font-size: 0.875rem;
   }
 }
 
 .btn-end {
+      min-width: 200px;
       width: 300px !important;
+      max-width: 300px;
+
 }
 
 @layer base {
@@ -214,6 +229,7 @@ p {
   }
 }
 
+
 main {
     display: flex;
     flex-wrap: wrap;
@@ -226,14 +242,14 @@ main {
 @media (max-width: 768px) {
   main {
     padding: 1rem;
-    gap: 1.5rem;
+    gap: 2rem;
   }
 }
 
 @media (max-width: 640px) {
   main {
     padding: 0.75rem;
-    gap: 1rem;
+    gap: 2rem;
   }
 }
 .logo-head {
@@ -342,6 +358,14 @@ gap: 0.5rem;
     max-width: 600px;
   }
 
+    .glassmorphism-card-symp{
+    background: rgba(255, 255, 255, 0.052);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 100%;
+    min-height: 280px;
+  }
+
   .glassmorphism-card-inm {
     background: rgba(255, 255, 255, 0.052);
     backdrop-filter: blur(10px);
@@ -360,7 +384,9 @@ gap: 0.5rem;
 
   @media (max-width: 768px) {
     .glassmorphism-card-inm,
-    .glassmorphism-card-neu {
+    .glassmorphism-card-neu,
+    .glassmorphism-card-symp, 
+    .glassmorphism {
       min-height: auto;
     }
   }
@@ -384,4 +410,11 @@ gap: 0.5rem;
   }
 }
 
+:hover {
 
+  .text-warning {
+ color: hsl(var(--warning)) !important;
+  }
+ 
+
+}

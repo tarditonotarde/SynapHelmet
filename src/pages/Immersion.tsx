@@ -89,7 +89,7 @@ const Immersion = () => {
   };
 
   const handleEndSession = () => {
-    toast.success("Session ended. Patient data saved.");
+    toast.success("Patient data saved.");
     navigate("/");
   };
 
@@ -117,7 +117,7 @@ const Immersion = () => {
   const handleDisconnect = () => {
     setConnectionState("disconnected");
     setSessionTime(0);
-    toast.info("Immersion disconnected. Session reset.");
+    toast.info("Immersion disconnected. Patient data saved.");
   };
 
   const handleSignEthics = () => {
@@ -164,7 +164,16 @@ className="holo-brain logo-h"/>
 
           <div className="head-line-2">
 
+            <Button
+              variant="outline"
+              onClick={() => setShowEthicsPanel(!showEthicsPanel)}
+              className="btn-ethics border-warning text-warning hover:bg-warning/10 focus:ring-2 focus:ring-warning/50"
+              aria-label="View ethics and safety protocol"
+            >
+              Ethics Permission
+                            <AlertTriangle className="w-4 h-4 mr-2" aria-hidden="true" />
 
+            </Button>
 
             <button 
               onClick={handleConnectionToggle}
@@ -203,8 +212,18 @@ className="holo-brain logo-h"/>
                 }}
               >
                 <span className="text-sm text-destructive font-semibold">
-                  Disconnect
+                  End Session
                 </span>
+                <Activity 
+    className={`w-5 h-5 ${
+      connectionState === "connected" 
+        ? 'text-destructive' 
+        : connectionState === "paused" 
+        ? 'text-destructive' 
+        : 'text-muted-foreground'
+    }`} 
+    aria-hidden="true"
+  />
               </button>
             )}
 
@@ -215,36 +234,24 @@ className="holo-brain logo-h"/>
               </span>
             </div>
 
-            <Button
-              variant="outline"
-              onClick={() => setShowEthicsPanel(!showEthicsPanel)}
-              className="border-warning text-warning hover:bg-warning/10 focus:ring-2 focus:ring-warning/50"
-              aria-label="View ethics and safety protocol"
-            >
-              <AlertTriangle className="w-4 h-4 mr-2" aria-hidden="true" />
-              Ethics
-            </Button>
+
           </div>
         </div>
       </header>
 
       {/* Main Immersion View */}
       <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Symptom Visualization */}
-        <div className="h-64 w-full rounded-2xl overflow-hidden border border-primary/30 glow-primary bg-card/20" role="img" aria-label="Visual representation of patient symptom intensity">
-          <SymptomVisualization symptomType="pain" intensity={intensity} />
-        </div>
 
         {/* Patient Profile */}
         {patient && <PatientProfile patient={patient} />}
 
+
         {/* Two Column Layout for Metrics */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
-          {/* Medical Stats */}
-          <MedicalStats currentIntensity={intensity} sessionTime={sessionTime} isConnected={connectionState === "connected"} />
-          
-          {/* Emotional Metrics */}
-          <EmotionalMetrics intensity={intensity} />
+
+        {/* Symptom Visualization */}
+        <div className="rounded-2xl overflow-hidden border border-primary/30 glow-primary bg-card/20" role="img" aria-label="Visual representation of patient symptom intensity">
+          <SymptomVisualization symptomType="pain" intensity={intensity} />
         </div>
 
         {/* Intensity Control */}
@@ -269,8 +276,21 @@ className="holo-brain logo-h"/>
           </div>
         </div>
 
+ </div>
+
+        {/* Two Column Layout for Metrics */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
+          {/* Medical Stats */}
+          <MedicalStats currentIntensity={intensity} sessionTime={sessionTime} isConnected={connectionState === "connected"} />
+          
+          {/* Emotional Metrics */}
+          <EmotionalMetrics intensity={intensity} />
+        </div>
+
+
+
         {/* Notes Panel with Audio Recording */}
-        <div className="glassmorphism rounded-2xl p-6 space-y-4 glow-primary animate-fade-in w-full" role="region" aria-label="Session observations and notes">
+        <div className="glassmorphism-card-neu rounded-2xl p-6 space-y-4 glow-primary animate-fade-in w-full" role="region" aria-label="Session observations and notes">
           <div className="flex items-center gap-3">
             <FileText className="w-6 h-6 text-primary" aria-hidden="true" />
             <h3 className="text-lg font-bold text-foreground">Observations</h3>
@@ -315,7 +335,7 @@ className="holo-brain logo-h"/>
             aria-label="End current immersion session and return to patient selection"
           >
             <AlertTriangle className="w-4 h-4 mr-2" aria-hidden="true" />
-            End Session
+            Patiens Dashboard
           </Button>
         </div>
       </main>

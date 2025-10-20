@@ -108,7 +108,7 @@ export const SymptomVisualization = ({ symptomType, intensity }: SymptomVisualiz
       )}
 
       {/* Center HUD */}
-      <div className="relative z-10 glassmorphism rounded-2xl p-8 space-y-4 glow-primary">
+      <div className="relative z-10 glassmorphism-card-symp rounded-2xl p-8 space-y-4 glow-primary">
         <div className="flex items-center gap-4">
           <Icon className="w-8 h-8 text-primary animate-pulse-glow" />
           <div>
