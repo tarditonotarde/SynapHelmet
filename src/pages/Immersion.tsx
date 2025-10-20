@@ -53,6 +53,9 @@ const Immersion = () => {
   const [notes, setNotes] = useState("");
   const [showEthicsPanel, setShowEthicsPanel] = useState(false);
   const [sessionTime, setSessionTime] = useState(0);
+  const [isConnected, setIsConnected] = useState(false);
+  const [hasSignedEthics, setHasSignedEthics] = useState(false);
+  const [showPastNotes, setShowPastNotes] = useState(false);
   
   const patient = mockPatients[patientId as keyof typeof mockPatients];
 
@@ -90,6 +93,26 @@ const Immersion = () => {
     setNotes(prev => prev + (prev ? "\n\n" : "") + `[Audio Note]: ${text}`);
   };
 
+  const handleConnectionToggle = () => {
+    if (!isConnected && !hasSignedEthics) {
+      setShowEthicsPanel(true);
+    } else {
+      setIsConnected(!isConnected);
+      if (isConnected) {
+        toast.info("Immersion disconnected");
+      } else {
+        toast.success("Immersion connected successfully");
+      }
+    }
+  };
+
+  const handleSignEthics = () => {
+    setHasSignedEthics(true);
+    setIsConnected(true);
+    setShowEthicsPanel(false);
+    toast.success("Ethics form signed. Immersion connected.");
+  };
+
   return (
     <div className="min-h-screen bg-gradient-dark relative overflow-hidden">
       <ParticleField density={80} color="#8A2BE2" />
@@ -107,13 +130,17 @@ className="holo-brain logo-h"/>
 
 
 
-            <div               onClick={handleEndSession}
- className="btn-inm">
-              <span className="text-sm text-foreground">Connected</span>
-                            <Activity 
-                           className="w-5 h-5 text-primary animate-pulse" />
-
-            </div>
+            <button 
+              onClick={handleConnectionToggle}
+              className="btn-inm cursor-pointer hover:bg-primary/10 transition-colors"
+            >
+              <span className="text-sm text-foreground">
+                {isConnected ? "Connected" : "Disconnected"}
+              </span>
+              <Activity 
+                className={`w-5 h-5 ${isConnected ? 'text-primary animate-pulse' : 'text-muted-foreground'}`} 
+              />
+            </button>
 
             <div className="btn-inm">
               <span className="text-sm text-foreground">Session Time</span>
@@ -146,7 +173,7 @@ className="holo-brain logo-h"/>
         {/* Two Column Layout for Metrics */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {/* Medical Stats */}
-          <MedicalStats currentIntensity={intensity} sessionTime={sessionTime} />
+          <MedicalStats currentIntensity={intensity} sessionTime={sessionTime} isConnected={isConnected} />
           
           {/* Emotional Metrics */}
           <EmotionalMetrics intensity={intensity} />
@@ -196,6 +223,15 @@ className="holo-brain logo-h"/>
             >
               Save Notes
             </Button>
+
+            <Button
+              onClick={() => setShowPastNotes(true)}
+              variant="outline"
+              className="w-full border-primary/30 text-foreground"
+            >
+              <FileText className="w-4 h-4 mr-2" />
+              View Past Notes & Sessions
+            </Button>
           </div>
         </div>
 
@@ -225,7 +261,7 @@ className="holo-brain logo-h"/>
                   onClick={() => setShowEthicsPanel(false)}
                   className="text-muted-foreground"
                 >
-                  Close
+                  {hasSignedEthics ? "Close" : "Cancel"}
                 </Button>
               </div>
 
@@ -267,6 +303,93 @@ className="holo-brain logo-h"/>
                     <p className="text-sm text-muted-foreground">
                       Session can be terminated immediately if distress levels exceed safety
                       thresholds
+                    </p>
+                  </div>
+                </div>
+
+                {!hasSignedEthics && (
+                  <div className="flex justify-end pt-4 border-t border-warning/20">
+                    <Button
+                      onClick={handleSignEthics}
+                      className="bg-warning hover:bg-warning/90 text-warning-foreground"
+                    >
+                      Sign & Connect
+                    </Button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Past Notes Dialog */}
+      {showPastNotes && (
+        <div className="fixed inset-0 z-30 flex items-center justify-center bg-background/80 backdrop-blur-sm animate-fade-in">
+          <div className="glassmorphism rounded-2xl p-8 max-w-3xl w-full max-h-[80vh] overflow-y-auto glow-primary border border-primary/30">
+            <div className="space-y-6">
+              <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-bold text-primary text-glow">
+                  Past Notes & Sessions
+                </h2>
+                <Button
+                  variant="ghost"
+                  onClick={() => setShowPastNotes(false)}
+                  className="text-muted-foreground"
+                >
+                  Close
+                </Button>
+              </div>
+
+              <div className="space-y-4">
+                {/* Last Session Summary */}
+                <div className="glassmorphism-card-neu rounded-lg p-4 border border-accent/20">
+                  <h3 className="font-bold text-foreground mb-2 flex items-center gap-2">
+                    <Activity className="w-4 h-4 text-secondary" />
+                    Last Session
+                  </h3>
+                  <div className="text-sm text-muted-foreground space-y-1 font-mono">
+                    <p>Date: {patient?.lastSession}</p>
+                    <p>Duration: 23 minutes</p>
+                    <p>Avg Intensity: {(patient?.averageIntensity * 100).toFixed(0)}%</p>
+                    <p>Max Heart Rate: 118 bpm</p>
+                  </div>
+                </div>
+
+                {/* Past Notes */}
+                <div className="space-y-3">
+                  <h3 className="font-bold text-foreground">Previous Notes</h3>
+                  
+                  <div className="glassmorphism-card-neu rounded-lg p-4 border border-primary/20">
+                    <div className="flex justify-between items-start mb-2">
+                      <span className="text-xs text-muted-foreground font-mono">2025-03-15 14:30</span>
+                      <span className="text-xs text-secondary font-mono">Session #7</span>
+                    </div>
+                    <p className="text-sm text-foreground">
+                      Patient reported decreased migraine intensity. Neural immersion at 65% 
+                      showed positive response. Recommend continuing current treatment protocol.
+                    </p>
+                  </div>
+
+                  <div className="glassmorphism-card-neu rounded-lg p-4 border border-primary/20">
+                    <div className="flex justify-between items-start mb-2">
+                      <span className="text-xs text-muted-foreground font-mono">2025-03-12 10:15</span>
+                      <span className="text-xs text-secondary font-mono">Session #6</span>
+                    </div>
+                    <p className="text-sm text-foreground">
+                      Initial calibration session. Patient tolerated immersion well. 
+                      Starting intensity at 50% with gradual increase planned.
+                    </p>
+                  </div>
+
+                  <div className="glassmorphism-card-neu rounded-lg p-4 border border-primary/20">
+                    <div className="flex justify-between items-start mb-2">
+                      <span className="text-xs text-muted-foreground font-mono">2025-03-08 16:45</span>
+                      <span className="text-xs text-secondary font-mono">Session #5</span>
+                    </div>
+                    <p className="text-sm text-foreground">
+                      Patient exhibited strong empathetic response during session. 
+                      Vital signs remained stable throughout. No adverse effects reported.
                     </p>
                   </div>
                 </div>

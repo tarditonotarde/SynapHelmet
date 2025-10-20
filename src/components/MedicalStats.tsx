@@ -1,3 +1,4 @@
+import React from "react";
 import { Card } from "@/components/ui/card";
 import { TrendingUp, TrendingDown, Activity, Clock } from "lucide-react";
 
@@ -11,16 +12,31 @@ interface StatData {
 interface MedicalStatsProps {
   currentIntensity: number;
   sessionTime: number;
+  isConnected: boolean;
 }
 
-export const MedicalStats = ({ currentIntensity, sessionTime }: MedicalStatsProps) => {
-  // Simulate realistic vital signs that vary with intensity
-  const heartRate = Math.round(70 + currentIntensity * 50); // 70-120 bpm
-  const systolic = Math.round(120 + currentIntensity * 20); // 120-140 mmHg
-  const diastolic = Math.round(80 + currentIntensity * 10); // 80-90 mmHg
-  const spo2 = Math.round(98 - currentIntensity * 3); // 98-95%
-  const respRate = Math.round(14 + currentIntensity * 8); // 14-22 bpm
-  const temperature = (36.5 + currentIntensity * 1.2).toFixed(1); // 36.5-37.7°C
+export const MedicalStats = ({ currentIntensity, sessionTime, isConnected }: MedicalStatsProps) => {
+  const [liveVariance, setLiveVariance] = React.useState(0);
+
+  React.useEffect(() => {
+    if (!isConnected) return;
+
+    const interval = setInterval(() => {
+      // Small random variance to simulate real-time fluctuations
+      setLiveVariance(Math.random() * 0.1 - 0.05); // -0.05 to +0.05
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [isConnected]);
+
+  // Simulate realistic vital signs that vary with intensity and live variance
+  const baseIntensity = currentIntensity + (isConnected ? liveVariance : 0);
+  const heartRate = Math.round(70 + baseIntensity * 50); // 70-120 bpm
+  const systolic = Math.round(120 + baseIntensity * 20); // 120-140 mmHg
+  const diastolic = Math.round(80 + baseIntensity * 10); // 80-90 mmHg
+  const spo2 = Math.round(98 - baseIntensity * 3); // 98-95%
+  const respRate = Math.round(14 + baseIntensity * 8); // 14-22 bpm
+  const temperature = (36.5 + baseIntensity * 1.2).toFixed(1); // 36.5-37.7°C
 
   const stats: StatData[] = [
     {
