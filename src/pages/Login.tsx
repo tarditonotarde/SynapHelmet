@@ -58,7 +58,7 @@ const Login = () => {
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
-              <Brain className="w-16 h-16 text-primary glow-primary animate-pulse-glow" />
+              <Brain className="holo-brain logo-h cursor-pointer" />
             </div>
             <h1 className="text-3xl font-bold mb-2">SympatHelmet</h1>
             <p className="text-sm text-muted-foreground font-mono">

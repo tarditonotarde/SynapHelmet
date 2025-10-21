@@ -364,8 +364,12 @@ main {
 
 .logo-h {
     color: hsl(var(--primary)) !important ;
-    width: 3rem;
-    height: 3rem;
+    width: 4rem;
+    height: 4rem;
+}
+
+.logo-land {
+    color: hsl(var(--primary)) !important ;
 }
 
 /* === 🔮 HOLOGRAPHIC BRAIN EFFECT === */

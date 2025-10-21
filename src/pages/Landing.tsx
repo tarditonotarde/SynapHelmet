@@ -29,7 +29,7 @@ const Landing = () => {
         {/* Animated Logo */}
         <div className="flex justify-center mb-8 animate-float">
           <div className="relative">
-            <Brain className="w-32 h-32 text-primary glow-primary animate-pulse-glow" />
+            <Brain className="w-32 h-32 logo-land holo-brain" />
             <div className="absolute inset-0 bg-gradient-atomic rounded-full blur-3xl opacity-50" />
           </div>
         </div>
