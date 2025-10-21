@@ -159,12 +159,26 @@ const Immersion = () => {
       <header className="glassmorphism-head">
         <div className="head-items-2">
           <div className="flex items-center gap-3">
+            
+
+          <div className="head-line">
+
             <div className="logo-head">
 <Brain
   onClick={() => navigate("/patients")}
   className="holo-brain logo-h cursor-pointer"
-  aria-label="Go to Patients Dashboard"
-/>            </div>
+  aria-label="Go to Patients Dashboard"/>            
+</div>
+
+   <div className="text-head">
+              <h1 className="text-title">
+                SympatHelmet
+              </h1>
+              <p className="text-xxs text-muted-foreground">            v1.0.0 | Black Mirror: Season 4 - Episode 6</p>
+            </div>
+ </div>
+
+
           </div>
 
           <div className="head-line-2">

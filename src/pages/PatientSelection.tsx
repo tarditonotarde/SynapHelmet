@@ -60,9 +60,10 @@ const PatientSelection = () => {
               <h1 className="text-title">
                 SympatHelmet
               </h1>
-              <p className="text-xs text-muted-foreground">v1.0 - patient selection</p>
+              <p className="text-xxs text-muted-foreground">            v1.0.0 | Black Mirror: Season 4 - Episode 6</p>
             </div>
           </div>
+          
         </div>
       </header>
 
