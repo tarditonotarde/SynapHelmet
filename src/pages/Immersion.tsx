@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Slider } from "@/components/ui/slider";
 import { Brain, FileText, AlertTriangle, Activity } from "lucide-react";
 import { toast } from "sonner";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 
 const mockPatients = {
@@ -156,11 +157,12 @@ const Immersion = () => {
       {/* Header HUD */}
       <header className="glassmorphism-head">
         <div className="head-items-2">
-
-          <div className="logo-head">
-  <Brain               onClick={handleEndSession}
-className="holo-brain logo-h"/>
-</div>
+          <div className="flex items-center gap-3">
+            <div className="logo-head">
+              <Brain onClick={handleEndSession} className="holo-brain logo-h cursor-pointer" />
+            </div>
+            <ThemeToggle />
+          </div>
 
           <div className="head-line-2">
 
@@ -245,9 +247,8 @@ className="holo-brain logo-h"/>
         {/* Patient Profile */}
         {patient && <PatientProfile patient={patient} />}
 
-
-        {/* Two Column Layout for Metrics */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
+        {/* Responsive Card Layout with Wrap */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6 w-full max-w-5xl mx-auto">
 
         {/* Symptom Visualization */}
         <div className="rounded-2xl overflow-hidden border border-primary/30 glow-primary bg-card/20" role="img" aria-label="Visual representation of patient symptom intensity">

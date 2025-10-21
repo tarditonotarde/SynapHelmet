@@ -13,8 +13,61 @@ html, body, #root {
   box-sizing: border-box;
   overflow-x: hidden; /* evita scroll horizontal */
 }
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+
+/* 
+===========================================
+DESIGN SYSTEM - SympatHelmet
+===========================================
+
+This design system follows a professional, medical-grade interface with 
+both dark and light theme support. All design tokens are centralized in 
+CSS variables for easy customization.
+
+THEME STRUCTURE:
+- Dark Theme: Futuristic retro-medical aesthetic with warm accents
+- Light Theme: Clean, professional medical interface
+
+COLOR VARIABLES (HSL format):
+--background: Main background color
+--foreground: Main text color
+--card: Card background
+--primary: Primary brand color (buttons, highlights)
+--secondary: Secondary accent color
+--accent: Tertiary accent color
+--destructive: Error/danger states
+--warning: Warning/caution states
+--muted: Subtle backgrounds and muted text
+--border: Border colors
+--input: Input field colors
+--ring: Focus ring colors
+
+GRADIENTS:
+--gradient-dark: Main background gradient
+--gradient-retro: Accent gradient for special elements
+--gradient-atomic: Radial glow effect
+
+GLOW EFFECTS:
+--glow-primary: Primary color glow
+--glow-secondary: Secondary color glow
+--glow-destructive: Error state glow
+--glow-warning: Warning state glow
+--glow-atomic: Accent glow effect
+
+TYPOGRAPHY:
+- Primary Font: Orbitron (headers, technical elements)
+- Secondary Font: Space Mono (body text, data displays)
+
+TO CUSTOMIZE:
+1. Modify color variables in :root (dark theme) or .light (light theme)
+2. All values use HSL format: hue saturation% lightness%
+3. Update --radius for border-radius consistency
+4. Adjust glow effects for intensity changes
+
+USAGE:
+- Colors: bg-primary, text-foreground, border-primary/30
+- Gradients: bg-gradient-dark, bg-gradient-retro
+- Glows: glow-primary, glow-secondary
+===========================================
 */
 
 h1 {
@@ -119,7 +172,7 @@ p {
 
 @layer base {
   :root {
-    /* 1960s Retro-Futuristic Theme */
+    /* Dark Theme - 1960s Retro-Futuristic */
     --background: 28 15% 8%;
     --foreground: 36 100% 92%;
 
@@ -169,6 +222,59 @@ p {
     --glow-destructive: 0 0 30px hsl(0 85% 60% / 0.6);
     --glow-warning: 0 0 30px hsl(45 95% 62% / 0.6);
     --glow-atomic: 0 0 40px hsl(180 72% 55% / 0.5), 0 0 80px hsl(180 72% 55% / 0.2);
+  }
+
+  .light {
+    /* Light Theme - Clean Medical Professional */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Medical Blue */
+    --primary: 210 100% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Professional Teal */
+    --secondary: 174 62% 42%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Accent Cyan */
+    --accent: 188 95% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Error Red */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Warning Orange */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 210 100% 45%;
+
+    --radius: 0.5rem;
+
+    /* Light Theme Gradients */
+    --gradient-dark: linear-gradient(180deg, hsl(210 40% 98%) 0%, hsl(210 40% 96%) 100%);
+    --gradient-retro: linear-gradient(135deg, hsl(210 100% 45%) 0%, hsl(174 62% 42%) 100%);
+    --gradient-atomic: radial-gradient(circle at center, hsl(188 95% 42% / 0.15) 0%, transparent 70%);
+    
+    /* Light Theme Glow Effects */
+    --glow-primary: 0 0 20px hsl(210 100% 45% / 0.4), 0 0 40px hsl(210 100% 45% / 0.2);
+    --glow-secondary: 0 0 20px hsl(174 62% 42% / 0.4), 0 0 40px hsl(174 62% 42% / 0.2);
+    --glow-destructive: 0 0 20px hsl(0 84% 60% / 0.4);
+    --glow-warning: 0 0 20px hsl(38 92% 50% / 0.4);
+    --glow-atomic: 0 0 30px hsl(188 95% 42% / 0.3), 0 0 60px hsl(188 95% 42% / 0.15);
   }
 }
 
