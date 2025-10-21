@@ -109,6 +109,11 @@ p {
     line-height: 1.6 !important;
 }
 
+.text-xxs {
+    font-size: 0.75rem !important;
+    line-height: 1rem !important;
+}
+
 .btn-card {
   padding: 0.5rem 0.75rem 0.5rem 0.75rem;
   background-color: hsl(var(--muted) / 0.2);
@@ -372,6 +377,7 @@ main {
     color: hsl(var(--primary)) !important ;
 }
 
+
 /* === 🔮 HOLOGRAPHIC BRAIN EFFECT === */
 .holo-brain {
   color: #00ffff; /* Electric Blue */
@@ -464,32 +470,37 @@ gap: 0.5rem;
     background: rgba(255, 255, 255, 0.02);
     backdrop-filter: blur(6px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    width: 100%;
-    max-width: 1000px;
   }
+
+  .glassmorphism-icons {
+    backdrop-filter: blur(6px);
+  }
+
 
     .glassmorphism-card-symp{
     background: rgba(255, 255, 255, 0.052);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    width: 100%;
-    min-height: 280px;
+    width: 350px;
+    max-width: 350px;
   }
 
   .glassmorphism-card-inm {
     background: rgba(255, 255, 255, 0.052);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    width: 100%;
-    min-height: 280px;
+    width: 350px;
+        max-width: 350px;
   }
 
   .glassmorphism-card-neu {
     background: rgba(255, 255, 255, 0.052);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    width: 100%;
-    min-height: 280px;
+    width: 350px;
+    max-width: 350px;
+
+
   }
 
   @media (max-width: 768px) {
@@ -497,6 +508,8 @@ gap: 0.5rem;
     .glassmorphism-card-neu,
     .glassmorphism-card-symp, 
     .glassmorphism {
+          max-width: 300px;
+
       min-height: auto;
     }
   }

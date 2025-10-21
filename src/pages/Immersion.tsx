@@ -160,8 +160,11 @@ const Immersion = () => {
         <div className="head-items-2">
           <div className="flex items-center gap-3">
             <div className="logo-head">
-              <Brain onClick={handleEndSession} className="holo-brain logo-h cursor-pointer" />
-            </div>
+<Brain
+  onClick={() => navigate("/patients")}
+  className="holo-brain logo-h cursor-pointer"
+  aria-label="Go to Patients Dashboard"
+/>            </div>
           </div>
 
           <div className="head-line-2">
@@ -242,21 +245,24 @@ const Immersion = () => {
       </header>
 
       {/* Main Immersion View */}
-      <main className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+
+        {/* Responsive Card Layout with Wrap */}
+        <div className="flex flex-wrap gap-6 justify-center">
+
 
         {/* Patient Profile */}
         {patient && <PatientProfile patient={patient} />}
 
-        {/* Responsive Card Layout with Wrap */}
-        <div className="flex flex-wrap gap-6 justify-center w-full">
+               {/* Symptom Visualization */} {/* Intensity Control */}
+        <div className="glassmorphism-card-inm rounded-2xl p-6 space-y-4 animate-fade-in" role="region" aria-label="Neural intensity control">
 
-        {/* Symptom Visualization */}
-        <div className="rounded-2xl overflow-hidden border border-primary/30 glow-primary bg-card/20 w-full max-w-[200px]" role="img" aria-label="Visual representation of patient symptom intensity">
+        <div className="" role="img" aria-label="Visual representation of patient symptom intensity">
           <SymptomVisualization symptomType="pain" intensity={intensity} />
         </div>
 
-        {/* Intensity Control */}
-        <div className="glassmorphism-card-inm rounded-2xl p-6 space-y-4 glow-secondary animate-fade-in w-full max-w-[200px]" role="region" aria-label="Neural intensity control">
+
           <div className="flex items-center gap-3">
             <Brain className="w-6 h-6 text-secondary" aria-hidden="true" />
             <h3 className="text-lg font-bold text-foreground">Neural Intensity</h3>
@@ -268,7 +274,7 @@ const Immersion = () => {
               onValueChange={(value) => setIntensity(value[0] / 100)}
               max={100}
               step={1}
-              className="w-full"
+              className=""
               aria-label={`Neural intensity slider. Current value: ${Math.round(intensity * 100)}%`}
             />
             <p className="text-sm text-muted-foreground font-mono" role="note">
@@ -276,23 +282,28 @@ const Immersion = () => {
             </p>
           </div>
         </div>
+</div>
+
+
+        {/* Responsive Card Layout with Wrap */}
+        <div className="flex flex-wrap gap-6 justify-center">
 
         {/* Medical Stats */}
-        <div className="w-full max-w-[200px]">
+        <div className="">
           <MedicalStats currentIntensity={intensity} sessionTime={sessionTime} isConnected={connectionState === "connected"} />
         </div>
         
         {/* Emotional Metrics */}
-        <div className="w-full max-w-[200px]">
+        <div className="">
           <EmotionalMetrics intensity={intensity} />
         </div>
+</div>
 
- </div>
 
 
 
         {/* Notes Panel with Audio Recording */}
-        <div className="glassmorphism-card-neu rounded-2xl p-6 space-y-4 glow-primary animate-fade-in w-full" role="region" aria-label="Session observations and notes">
+        <div className="glassmorphism-card-neu rounded-2xl p-6 space-y-4 animate-fade-in" role="region" aria-label="Session observations and notes">
           <div className="flex items-center gap-3">
             <FileText className="w-6 h-6 text-primary" aria-hidden="true" />
             <h3 className="text-lg font-bold text-foreground">Observations</h3>
@@ -311,7 +322,7 @@ const Immersion = () => {
             
             <Button
               onClick={() => toast.success("Notes saved to patient record")}
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground focus:ring-2 focus:ring-primary/50"
+              className=" bg-primary hover:bg-primary/90 text-primary-foreground focus:ring-2 focus:ring-primary/50"
               aria-label="Save current session notes to patient record"
             >
               Save Notes
@@ -320,7 +331,7 @@ const Immersion = () => {
             <Button
               onClick={() => setShowPastNotes(true)}
               variant="outline"
-              className="w-full border-primary/30 text-foreground focus:ring-2 focus:ring-primary/50"
+              className=" border-primary/30 text-foreground focus:ring-2 focus:ring-primary/50"
               aria-label="View past session notes and records"
             >
               <FileText className="w-4 h-4 mr-2" aria-hidden="true" />
@@ -330,10 +341,9 @@ const Immersion = () => {
         </div>
 
         {/* Action Buttons */}
-        <div className="space-y-3 w-full flex flex-col items-center">
+        <div className="space-y-3  flex flex-col items-center">
           <Button
-            onClick={handleEndSession}
-            className="btn-end w-full max-w-sm bg-destructive hover:bg-destructive/90 text-destructive-foreground glow-destructive focus:ring-2 focus:ring-destructive/50"
+ onClick={() => navigate("/patients")}            className="btn-end max-w-sm bg-destructive hover:bg-destructive/90 text-destructive-foreground glow-destructive focus:ring-2 focus:ring-destructive/50"
             aria-label="End current immersion session and return to patient selection"
           >
             <AlertTriangle className="w-4 h-4 mr-2" aria-hidden="true" />
@@ -350,7 +360,7 @@ const Immersion = () => {
           aria-modal="true"
           aria-labelledby="ethics-title"
         >
-          <div className="glassmorphism rounded-2xl p-6 sm:p-8 max-w-2xl w-full glow-warning border border-warning/30 max-h-[90vh] overflow-y-auto">
+          <div className="glassmorphism rounded-2xl p-6 sm:p-8 max-w-2xl glow-warning border border-warning/30 max-h-[90vh] overflow-y-auto">
             <div className="space-y-6">
               <div className="flex items-center justify-between flex-wrap gap-4">
                 <h2 id="ethics-title" className="text-xl sm:text-2xl font-bold text-warning text-glow">
@@ -433,7 +443,7 @@ const Immersion = () => {
           aria-modal="true"
           aria-labelledby="past-notes-title"
         >
-          <div className="glassmorphism rounded-2xl p-6 sm:p-8 max-w-3xl w-full max-h-[90vh] overflow-y-auto glow-primary border border-primary/30">
+          <div className="glassmorphism rounded-2xl p-6 sm:p-8 max-w-3xl max-h-[90vh] overflow-y-auto glow-primary border border-primary/30">
             <div className="space-y-6">
               <div className="flex items-center justify-between flex-wrap gap-4">
                 <h2 id="past-notes-title" className="text-xl sm:text-2xl font-bold text-primary text-glow">

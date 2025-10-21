@@ -23,7 +23,7 @@ export const TopNavigation = () => {
         variant="outline"
         size="icon"
         onClick={handleLogout}
-        className="glassmorphism border-destructive/30 hover:border-destructive hover:bg-destructive/10 transition-all duration-300"
+        className="glassmorphism-icons border-destructive/30 hover:border-destructive hover:bg-destructive/10 transition-all duration-300"
         aria-label="Logout"
       >
         <LogOut className="h-5 w-5 text-destructive" />

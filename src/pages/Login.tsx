@@ -54,7 +54,7 @@ const Login = () => {
 
       {/* Login Card */}
       <div className="relative z-10 w-full max-w-md animate-fade-in">
-        <div className="glassmorphism-card-neu p-8 rounded-2xl border border-primary/30">
+        <div className="p-8 rounded-2xl border border-primary/30">
           {/* Header */}
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
@@ -124,8 +124,8 @@ const Login = () => {
           </form>
 
           {/* Footer */}
-          <div className="mt-8 pt-6 border-t border-primary/20 text-center">
-            <p className="text-xs text-muted-foreground font-mono">
+          <div className="mt-6 pt-3 border-t border-primary/20 text-center">
+            <p className="text-xxs text-muted-foreground font-mono">
               Demo Credentials:<br />
               <span className="text-primary">Dr. Peter Dawson</span> / sympat2025
             </p>
@@ -134,7 +134,7 @@ const Login = () => {
 
         {/* Security Notice */}
         <div className="mt-6 text-center">
-          <p className="text-xs text-muted-foreground/70 font-mono">
+          <p className="text-xxs text-muted-foreground/70 font-mono">
             All sessions are monitored and logged for security purposes
           </p>
         </div>

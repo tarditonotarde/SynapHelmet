@@ -44,7 +44,7 @@ const Landing = () => {
             Neural Immersion Technology
           </p>
           <p className="text-sm text-muted-foreground/70 font-mono">
-            v1.0.0 | Medical Protocol System
+            v1.0.0 | Black Mirror: Season 4 - Episode 6
           </p>
         </div>
 

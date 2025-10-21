@@ -55,7 +55,7 @@ export const SymptomVisualization = ({ symptomType, intensity }: SymptomVisualiz
   const Icon = config.icon;
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+    <div className="relative flex items-center justify-center overflow-hidden">
       {/* Animated Background Pattern */}
       <div
         className="absolute inset-0 animate-pulse-glow"
@@ -108,7 +108,7 @@ export const SymptomVisualization = ({ symptomType, intensity }: SymptomVisualiz
       )}
 
       {/* Center HUD */}
-      <div className="relative z-10 glassmorphism-card-symp rounded-2xl p-8 space-y-4 glow-primary">
+      <div className="relative z-10 glassmorphism-card-symp rounded-2xl p-8 space-y-4">
         <div className="flex items-center gap-4">
           <Icon className="w-8 h-8 text-primary animate-pulse-glow" />
           <div>

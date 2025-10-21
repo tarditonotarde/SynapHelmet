@@ -24,7 +24,7 @@ export const ThemeToggle = () => {
       variant="outline"
       size="icon"
       onClick={toggleTheme}
-      className="glassmorphism border-primary/30 hover:border-primary hover:bg-primary/10 transition-all duration-300"
+      className="glassmorphism-icons border-primary/30 hover:border-primary hover:bg-primary/10 transition-all duration-300"
       aria-label="Toggle theme"
     >
       {theme === "dark" ? (
