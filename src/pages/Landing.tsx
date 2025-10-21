@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Brain } from "lucide-react";
 import { ParticleField } from "@/components/ParticleField";
+import { TopNavigation } from "@/components/TopNavigation";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const Landing = () => {
 
   return (
     <div className={`min-h-screen bg-gradient-dark relative overflow-hidden flex items-center justify-center transition-opacity duration-800 ${fadeOut ? 'opacity-0' : 'opacity-100'}`}>
+      <TopNavigation />
       <ParticleField density={80} color="#00FFFF" />
       
       <div className="relative z-10 text-center space-y-8 animate-fade-in px-4">

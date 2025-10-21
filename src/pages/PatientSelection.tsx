@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { ParticleField } from "@/components/ParticleField";
 import { PatientCard } from "@/components/PatientCard";
 import { Button } from "@/components/ui/button";
-import { Brain, ShieldCheck, LogOut } from "lucide-react";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { Brain, ShieldCheck } from "lucide-react";
+import { TopNavigation } from "@/components/TopNavigation";
 
 const mockPatients = [
   {
@@ -43,12 +43,9 @@ const PatientSelection = () => {
     }
   };
 
-  const handleLogout = () => {
-    navigate("/login");
-  };
-
   return (
     <div className="min-h-screen bg-gradient-dark relative overflow-hidden">
+      <TopNavigation />
       <ParticleField density={60} color="#00FFFF" />
 
       {/* Header */}
@@ -65,20 +62,6 @@ const PatientSelection = () => {
               </h1>
               <p className="text-xs text-muted-foreground">v1.0 - patient selection</p>
             </div>
-          </div>
-
-          {/* Header Actions */}
-          <div className="flex items-center gap-3">
-            <ThemeToggle />
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={handleLogout}
-              className="glassmorphism border-destructive/30 hover:border-destructive hover:bg-destructive/10 transition-all duration-300"
-              aria-label="Logout"
-            >
-              <LogOut className="h-5 w-5 text-destructive" />
-            </Button>
           </div>
         </div>
       </header>

@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Slider } from "@/components/ui/slider";
 import { Brain, FileText, AlertTriangle, Activity } from "lucide-react";
 import { toast } from "sonner";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { TopNavigation } from "@/components/TopNavigation";
 
 
 const mockPatients = {
@@ -152,6 +152,7 @@ const Immersion = () => {
 
   return (
     <div className="min-h-screen bg-gradient-dark relative overflow-hidden">
+      <TopNavigation />
       <ParticleField density={80} color="#8A2BE2" />
 
       {/* Header HUD */}
@@ -161,7 +162,6 @@ const Immersion = () => {
             <div className="logo-head">
               <Brain onClick={handleEndSession} className="holo-brain logo-h cursor-pointer" />
             </div>
-            <ThemeToggle />
           </div>
 
           <div className="head-line-2">
@@ -248,15 +248,15 @@ const Immersion = () => {
         {patient && <PatientProfile patient={patient} />}
 
         {/* Responsive Card Layout with Wrap */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6 w-full max-w-5xl mx-auto">
+        <div className="flex flex-wrap gap-6 justify-center w-full">
 
         {/* Symptom Visualization */}
-        <div className="rounded-2xl overflow-hidden border border-primary/30 glow-primary bg-card/20" role="img" aria-label="Visual representation of patient symptom intensity">
+        <div className="rounded-2xl overflow-hidden border border-primary/30 glow-primary bg-card/20 w-full max-w-[200px]" role="img" aria-label="Visual representation of patient symptom intensity">
           <SymptomVisualization symptomType="pain" intensity={intensity} />
         </div>
 
         {/* Intensity Control */}
-        <div className="glassmorphism-card-inm rounded-2xl p-6 space-y-4 glow-secondary animate-fade-in w-full" role="region" aria-label="Neural intensity control">
+        <div className="glassmorphism-card-inm rounded-2xl p-6 space-y-4 glow-secondary animate-fade-in w-full max-w-[200px]" role="region" aria-label="Neural intensity control">
           <div className="flex items-center gap-3">
             <Brain className="w-6 h-6 text-secondary" aria-hidden="true" />
             <h3 className="text-lg font-bold text-foreground">Neural Intensity</h3>
@@ -277,16 +277,17 @@ const Immersion = () => {
           </div>
         </div>
 
- </div>
-
-        {/* Two Column Layout for Metrics */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
-          {/* Medical Stats */}
+        {/* Medical Stats */}
+        <div className="w-full max-w-[200px]">
           <MedicalStats currentIntensity={intensity} sessionTime={sessionTime} isConnected={connectionState === "connected"} />
-          
-          {/* Emotional Metrics */}
+        </div>
+        
+        {/* Emotional Metrics */}
+        <div className="w-full max-w-[200px]">
           <EmotionalMetrics intensity={intensity} />
         </div>
+
+ </div>
 
 
 

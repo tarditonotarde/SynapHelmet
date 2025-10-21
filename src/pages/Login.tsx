@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { TopNavigation } from "@/components/TopNavigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const DOCTOR_CREDENTIALS = {
@@ -43,9 +44,10 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-gradient-dark relative overflow-hidden flex items-center justify-center p-4">
+      <TopNavigation />
       <ParticleField density={60} color="#00FFFF" />
       
-      {/* Theme Toggle */}
+      {/* Theme Toggle for login page */}
       <div className="absolute top-6 right-6 z-20">
         <ThemeToggle />
       </div>

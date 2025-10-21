@@ -24,7 +24,7 @@ export const MedicalStats = ({ currentIntensity, sessionTime, isConnected }: Med
     const interval = setInterval(() => {
       // Small random variance to simulate real-time fluctuations
       setLiveVariance(Math.random() * 0.1 - 0.05); // -0.05 to +0.05
-    }, 2000);
+    }, 500); // Faster updates for more dynamic appearance
 
     return () => clearInterval(interval);
   }, [isConnected]);
