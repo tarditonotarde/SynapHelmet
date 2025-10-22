@@ -9,7 +9,7 @@ import { EmotionalMetrics } from "@/components/EmotionalMetrics";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Slider } from "@/components/ui/slider";
-import { Brain, FileText, AlertTriangle, Activity } from "lucide-react";
+import { Brain, FileText, AlertTriangle, Activity, X } from "lucide-react";
 import { toast } from "sonner";
 import { TopNavigation } from "@/components/TopNavigation";
 
@@ -374,20 +374,21 @@ const Immersion = () => {
           aria-modal="true"
           aria-labelledby="ethics-title"
         >
-          <div className="glassmorphism rounded-2xl p-6 sm:p-8 max-w-2xl glow-warning border border-warning/30 max-h-[90vh] overflow-y-auto">
+          <div className="glassmorphism rounded-2xl p-6 sm:p-8 max-w-2xl w-full glow-warning border border-warning/30 max-h-[90vh] overflow-y-auto relative">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setShowEthicsPanel(false)}
+              className="absolute top-4 right-4 text-muted-foreground hover:text-foreground focus:ring-2 focus:ring-warning/50"
+              aria-label={hasSignedEthics ? "Close ethics panel" : "Cancel and close ethics panel"}
+            >
+              <X className="w-5 h-5" />
+            </Button>
             <div className="space-y-6">
-              <div className="flex items-center justify-between flex-wrap gap-4">
-                <h2 id="ethics-title" className="text-xl sm:text-2xl font-bold text-warning text-glow">
+              <div>
+                <h2 id="ethics-title" className="text-xl sm:text-2xl font-bold text-warning text-glow pr-10">
                   Ethics & Safety Protocol
                 </h2>
-                <Button
-                  variant="ghost"
-                  onClick={() => setShowEthicsPanel(false)}
-                  className="text-muted-foreground focus:ring-2 focus:ring-warning/50"
-                  aria-label={hasSignedEthics ? "Close ethics panel" : "Cancel and close ethics panel"}
-                >
-                  {hasSignedEthics ? "Close" : "Cancel"}
-                </Button>
               </div>
 
               <div className="space-y-4 text-foreground">
@@ -457,31 +458,32 @@ const Immersion = () => {
           aria-modal="true"
           aria-labelledby="past-notes-title"
         >
-          <div className="glassmorphism rounded-2xl p-6 sm:p-8 max-w-3xl max-h-[90vh] overflow-y-auto glow-primary border border-primary/30">
+          <div className="glassmorphism rounded-2xl p-4 sm:p-6 md:p-8 max-w-3xl w-full max-h-[90vh] overflow-y-auto glow-primary border border-primary/30 relative">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setShowPastNotes(false)}
+              className="absolute top-4 right-4 text-muted-foreground hover:text-foreground focus:ring-2 focus:ring-primary/50"
+              aria-label="Close past notes dialog"
+            >
+              <X className="w-5 h-5" />
+            </Button>
             <div className="space-y-6">
-              <div className="flex items-center justify-between flex-wrap gap-4">
-                <h2 id="past-notes-title" className="text-xl sm:text-2xl font-bold text-primary text-glow">
+              <div>
+                <h2 id="past-notes-title" className="text-xl sm:text-2xl font-bold text-primary text-glow pr-10">
                   Past Notes & Sessions
                 </h2>
-                <Button
-                  variant="ghost"
-                  onClick={() => setShowPastNotes(false)}
-                  className="text-muted-foreground focus:ring-2 focus:ring-primary/50"
-                  aria-label="Close past notes dialog"
-                >
-                  Close
-                </Button>
               </div>
 
               <div className="space-y-4">
                 {/* Last Session Summary */}
-                <div className="glassmorphism-card-neu rounded-lg p-4 border border-accent/20">
-                  <h3 className="font-bold text-foreground mb-2 flex items-center gap-2">
-                    <Activity className="w-4 h-4 text-secondary" />
+                <div className="glassmorphism-card-neu rounded-lg p-3 sm:p-4 border border-accent/20">
+                  <h3 className="font-bold text-foreground mb-2 flex items-center gap-2 text-sm sm:text-base">
+                    <Activity className="w-4 h-4 text-secondary flex-shrink-0" />
                     Last Session
                   </h3>
-                  <div className="text-sm text-muted-foreground space-y-1 font-mono">
-                    <p>Date: {patient?.lastSession}</p>
+                  <div className="text-xs sm:text-sm text-muted-foreground space-y-1 font-mono">
+                    <p className="break-words">Date: {patient?.lastSession}</p>
                     <p>Duration: 23 minutes</p>
                     <p>Avg Intensity: {(patient?.averageIntensity * 100).toFixed(0)}%</p>
                     <p>Max Heart Rate: 118 bpm</p>
@@ -490,36 +492,36 @@ const Immersion = () => {
 
                 {/* Past Notes */}
                 <div className="space-y-3">
-                  <h3 className="font-bold text-foreground">Previous Notes</h3>
+                  <h3 className="font-bold text-foreground text-sm sm:text-base">Previous Notes</h3>
                   
-                  <div className="glassmorphism-card-neu rounded-lg p-4 border border-primary/20">
-                    <div className="flex justify-between items-start mb-2">
+                  <div className="glassmorphism-card-neu rounded-lg p-3 sm:p-4 border border-primary/20">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 mb-2">
                       <span className="text-xs text-muted-foreground font-mono">2025-03-15 14:30</span>
                       <span className="text-xs text-secondary font-mono">Session #7</span>
                     </div>
-                    <p className="text-sm text-foreground">
+                    <p className="text-xs sm:text-sm text-foreground">
                       Patient reported decreased migraine intensity. Neural immersion at 65% 
                       showed positive response. Recommend continuing current treatment protocol.
                     </p>
                   </div>
 
-                  <div className="glassmorphism-card-neu rounded-lg p-4 border border-primary/20">
-                    <div className="flex justify-between items-start mb-2">
+                  <div className="glassmorphism-card-neu rounded-lg p-3 sm:p-4 border border-primary/20">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 mb-2">
                       <span className="text-xs text-muted-foreground font-mono">2025-03-12 10:15</span>
                       <span className="text-xs text-secondary font-mono">Session #6</span>
                     </div>
-                    <p className="text-sm text-foreground">
+                    <p className="text-xs sm:text-sm text-foreground">
                       Initial calibration session. Patient tolerated immersion well. 
                       Starting intensity at 50% with gradual increase planned.
                     </p>
                   </div>
 
-                  <div className="glassmorphism-card-neu rounded-lg p-4 border border-primary/20">
-                    <div className="flex justify-between items-start mb-2">
+                  <div className="glassmorphism-card-neu rounded-lg p-3 sm:p-4 border border-primary/20">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 mb-2">
                       <span className="text-xs text-muted-foreground font-mono">2025-03-08 16:45</span>
                       <span className="text-xs text-secondary font-mono">Session #5</span>
                     </div>
-                    <p className="text-sm text-foreground">
+                    <p className="text-xs sm:text-sm text-foreground">
                       Patient exhibited strong empathetic response during session. 
                       Vital signs remained stable throughout. No adverse effects reported.
                     </p>
