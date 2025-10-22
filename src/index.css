@@ -70,6 +70,115 @@ USAGE:
 ===========================================
 */
 
+@layer base {
+  :root {
+    /* Dark Theme - 1960s Retro-Futuristic */
+    --background: 28 15% 8%;
+    --foreground: 36 100% 92%;
+
+    --card: 32 18% 12%;
+    --card-foreground: 36 100% 92%;
+
+    --popover: 32 18% 12%;
+    --popover-foreground: 36 100% 92%;
+
+    /* Space Age Orange */
+    --primary: 25 95% 58%;
+    --primary-foreground: 28 15% 8%;
+
+    /* Retro Teal */
+    --secondary: 174 65% 48%;
+    --secondary-foreground: 28 15% 8%;
+
+    --muted: 28 12% 20%;
+    --muted-foreground: 36 40% 60%;
+
+     /* Atomic Turquoise - Darker */
+    --accent: 180 72% 45%;
+    --accent-foreground: 28 15% 4%;
+
+    /* Warning Red */
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 36 100% 92%;
+
+    /* Caution Yellow */
+    --warning: 45 95% 62%;
+    --warning-foreground: 28 15% 8%;
+
+    --border: 32 15% 25%;
+    --input: 32 15% 25%;
+    --ring: 25 95% 58%;
+
+    --radius: 0.5rem;
+
+    /* Retro-Futuristic Gradients */
+    --gradient-dark: linear-gradient(180deg, hsl(28 15% 8%) 0%, hsl(32 18% 12%) 100%);
+    --gradient-retro: linear-gradient(135deg, hsl(25 95% 58%) 0%, hsl(174 65% 48%) 100%);
+    --gradient-atomic: radial-gradient(circle at center, hsl(180 72% 55% / 0.2) 0%, transparent 70%);
+    
+    /* Atomic Age Glow Effects */
+    --glow-primary: 0 0 30px hsl(25 95% 58% / 0.6), 0 0 60px hsl(25 95% 58% / 0.3);
+    --glow-secondary: 0 0 30px hsl(174 65% 48% / 0.6), 0 0 60px hsl(174 65% 48% / 0.3);
+    --glow-destructive: 0 0 30px hsl(0 85% 60% / 0.6);
+    --glow-warning: 0 0 30px hsl(45 95% 62% / 0.6);
+    --glow-atomic: 0 0 40px hsl(180 72% 55% / 0.5), 0 0 80px hsl(180 72% 55% / 0.2);
+  }
+
+  .light {
+    /* Light Theme - Clean Medical Professional */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Medical Blue */
+    --primary: 210 100% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Professional Teal */
+    --secondary: 174 62% 42%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Accent Cyan */
+    --accent: 188 95% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Error Red */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Warning Orange */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 210 100% 45%;
+
+    --radius: 0.5rem;
+
+    /* Light Theme Gradients */
+    --gradient-dark: linear-gradient(180deg, hsl(210 40% 98%) 0%, hsl(210 40% 96%) 100%);
+    --gradient-retro: linear-gradient(135deg, hsl(210 100% 45%) 0%, hsl(174 62% 42%) 100%);
+    --gradient-atomic: radial-gradient(circle at center, hsl(188 95% 42% / 0.15) 0%, transparent 70%);
+    
+    /* Light Theme Glow Effects */
+    --glow-primary: 0 0 20px hsl(210 100% 45% / 0.4), 0 0 40px hsl(210 100% 45% / 0.2);
+    --glow-secondary: 0 0 20px hsl(174 62% 42% / 0.4), 0 0 40px hsl(174 62% 42% / 0.2);
+    --glow-destructive: 0 0 20px hsl(0 84% 60% / 0.4);
+    --glow-warning: 0 0 20px hsl(38 92% 50% / 0.4);
+    --glow-atomic: 0 0 30px hsl(188 95% 42% / 0.3), 0 0 60px hsl(188 95% 42% / 0.15);
+  }
+}
+
+
 h1 {
     font-family: 'Orbitron', sans-serif !important;
     font-size: 1.75rem !important;
@@ -175,113 +284,7 @@ p {
 
 }
 
-@layer base {
-  :root {
-    /* Dark Theme - 1960s Retro-Futuristic */
-    --background: 28 15% 8%;
-    --foreground: 36 100% 92%;
 
-    --card: 32 18% 12%;
-    --card-foreground: 36 100% 92%;
-
-    --popover: 32 18% 12%;
-    --popover-foreground: 36 100% 92%;
-
-    /* Space Age Orange */
-    --primary: 25 95% 58%;
-    --primary-foreground: 28 15% 8%;
-
-    /* Retro Teal */
-    --secondary: 174 65% 48%;
-    --secondary-foreground: 28 15% 8%;
-
-    --muted: 28 12% 20%;
-    --muted-foreground: 36 40% 60%;
-
-    /* Atomic Turquoise */
-    --accent: 180 72% 55%;
-    --accent-foreground: 28 15% 8%;
-
-    /* Warning Red */
-    --destructive: 0 85% 60%;
-    --destructive-foreground: 36 100% 92%;
-
-    /* Caution Yellow */
-    --warning: 45 95% 62%;
-    --warning-foreground: 28 15% 8%;
-
-    --border: 32 15% 25%;
-    --input: 32 15% 25%;
-    --ring: 25 95% 58%;
-
-    --radius: 0.5rem;
-
-    /* Retro-Futuristic Gradients */
-    --gradient-dark: linear-gradient(180deg, hsl(28 15% 8%) 0%, hsl(32 18% 12%) 100%);
-    --gradient-retro: linear-gradient(135deg, hsl(25 95% 58%) 0%, hsl(174 65% 48%) 100%);
-    --gradient-atomic: radial-gradient(circle at center, hsl(180 72% 55% / 0.2) 0%, transparent 70%);
-    
-    /* Atomic Age Glow Effects */
-    --glow-primary: 0 0 30px hsl(25 95% 58% / 0.6), 0 0 60px hsl(25 95% 58% / 0.3);
-    --glow-secondary: 0 0 30px hsl(174 65% 48% / 0.6), 0 0 60px hsl(174 65% 48% / 0.3);
-    --glow-destructive: 0 0 30px hsl(0 85% 60% / 0.6);
-    --glow-warning: 0 0 30px hsl(45 95% 62% / 0.6);
-    --glow-atomic: 0 0 40px hsl(180 72% 55% / 0.5), 0 0 80px hsl(180 72% 55% / 0.2);
-  }
-
-  .light {
-    /* Light Theme - Clean Medical Professional */
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-
-    /* Medical Blue */
-    --primary: 210 100% 45%;
-    --primary-foreground: 0 0% 100%;
-
-    /* Professional Teal */
-    --secondary: 174 62% 42%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-
-    /* Accent Cyan */
-    --accent: 188 95% 42%;
-    --accent-foreground: 0 0% 100%;
-
-    /* Error Red */
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    /* Warning Orange */
-    --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 100%;
-
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 210 100% 45%;
-
-    --radius: 0.5rem;
-
-    /* Light Theme Gradients */
-    --gradient-dark: linear-gradient(180deg, hsl(210 40% 98%) 0%, hsl(210 40% 96%) 100%);
-    --gradient-retro: linear-gradient(135deg, hsl(210 100% 45%) 0%, hsl(174 62% 42%) 100%);
-    --gradient-atomic: radial-gradient(circle at center, hsl(188 95% 42% / 0.15) 0%, transparent 70%);
-    
-    /* Light Theme Glow Effects */
-    --glow-primary: 0 0 20px hsl(210 100% 45% / 0.4), 0 0 40px hsl(210 100% 45% / 0.2);
-    --glow-secondary: 0 0 20px hsl(174 62% 42% / 0.4), 0 0 40px hsl(174 62% 42% / 0.2);
-    --glow-destructive: 0 0 20px hsl(0 84% 60% / 0.4);
-    --glow-warning: 0 0 20px hsl(38 92% 50% / 0.4);
-    --glow-atomic: 0 0 30px hsl(188 95% 42% / 0.3), 0 0 60px hsl(188 95% 42% / 0.15);
-  }
-}
 
 @layer utilities {
   .glow-primary {
@@ -541,3 +544,12 @@ gap: 0.5rem;
  
 
 }
+
+
+.notes-past {
+  display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    max-width: 50vw;
+}
+

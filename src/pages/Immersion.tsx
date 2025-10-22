@@ -379,7 +379,7 @@ const Immersion = () => {
               variant="ghost"
               size="icon"
               onClick={() => setShowEthicsPanel(false)}
-              className="absolute top-4 right-4 text-muted-foreground hover:text-foreground focus:ring-2 focus:ring-warning/50"
+              className="absolute top-6 right-6 text-muted-foreground hover:text-foreground focus:ring-2 focus:ring-warning/50"
               aria-label={hasSignedEthics ? "Close ethics panel" : "Cancel and close ethics panel"}
             >
               <X className="w-5 h-5" />
@@ -458,7 +458,7 @@ const Immersion = () => {
           aria-modal="true"
           aria-labelledby="past-notes-title"
         >
-          <div className="glassmorphism rounded-2xl p-4 sm:p-6 md:p-8 max-w-3xl w-full max-h-[90vh] overflow-y-auto glow-primary border border-primary/30 relative">
+          <div className="note-p glassmorphism rounded-2xl p-4 sm:p-6 md:p-8 max-w-3xl  max-h-[90vh] overflow-y-auto glow-primary border border-primary/30 relative">
             <Button
               variant="ghost"
               size="icon"
@@ -475,7 +475,7 @@ const Immersion = () => {
                 </h2>
               </div>
 
-              <div className="space-y-4">
+              <div className="notes-past space-y-4">
                 {/* Last Session Summary */}
                 <div className="glassmorphism-card-neu rounded-lg p-3 sm:p-4 border border-accent/20">
                   <h3 className="font-bold text-foreground mb-2 flex items-center gap-2 text-sm sm:text-base">
